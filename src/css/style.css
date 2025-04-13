@@ -1,0 +1,428 @@
+:root {
+    --bg-dark: #121212;
+    --bg-darker: #0a0a0a;
+    --accent: #ff2d75;
+    --accent-dark: #d62460;
+    --text-light: #ffffff;
+    --text-gray: #aaaaaa;
+    --gradient-pink: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    --gradient-section: linear-gradient(to bottom, 
+      rgba(255,45,117,0.1) 0%, 
+      rgba(255,45,117,0) 20%);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+  
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* Основные стили */
+  .fullscreen {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Меню */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+  }
+  
+  .logo svg {
+    height: 30px;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo:hover svg {
+    transform: scale(1.05);
+  }
+  
+  .main-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+  
+  .main-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .burger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-light);
+    transition: all 0.3s ease;
+  }
+  
+  /* Hero секция */
+  #hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--bg-darker), var(--bg-dark));
+  }
+  
+  .hero-content {
+    padding-left: 260px;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+  }
+  
+  /* Секции */
+  section {
+    position: relative;
+  }
+  
+  section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-pink);
+    opacity: 0.3;
+  }
+  
+  section:nth-child(even) {
+    background: var(--gradient-section);
+  }
+  
+  h1, h2, h3 {
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+  }
+  
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-pink);
+    border-radius: 3px;
+  }
+  
+  /* Карточки */
+  .metric-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 45, 117, 0.1);
+  }
+  
+  .metric-value {
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--gradient-pink);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+  }
+  
+  .metric-decoration {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-pink);
+    opacity: 0.1;
+    border-radius: 50% 0 0 0;
+  }
+  
+  /* Команда */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .team-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+  }
+  
+  .team-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-5px);
+  }
+  
+  .avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--gradient-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .team-card:hover .avatar {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 45, 117, 0.3);
+  }
+  
+  /* Проекты */
+  .project-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 30px auto;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .project-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gradient-pink);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .project-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-pink);
+    opacity: 0.5;
+  }
+  
+  .tech-tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .tech-tag {
+    background: rgba(255, 45, 117, 0.2);
+    color: var(--accent);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  /* Контакты */
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-link:hover {
+    background: rgba(255, 45, 117, 0.1);
+    transform: translateX(5px);
+  }
+  
+  .icon-mail {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Кнопка "Наверх" */
+  .scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(255, 45, 117, 0.3);
+  }
+  
+  .scroll-top svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+  }
+  
+  .scroll-top:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 45, 117, 0.5);
+  }
+  
+  /* Анимация скролла */
+  .scroller {
+    margin-top: 50px;
+  }
+  
+  .mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--accent);
+    border-radius: 15px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .wheel {
+    width: 6px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 3px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 2s infinite;
+  }
+  
+  @keyframes scroll {
+    0% { top: 10px; opacity: 1; }
+    50% { top: 30px; opacity: 0.5; }
+    100% { top: 10px; opacity: 1; }
+  }
+  
+  /* Адаптив */
+  @media (max-width: 768px) {
+    .main-nav ul {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background: var(--bg-darker);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      transition: right 0.3s ease;
+    }
+  
+    .main-nav ul.active {
+      right: 0;
+    }
+  
+    .burger {
+      display: flex;
+    }
+  
+    .burger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+  
+    .burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .burger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .metric-card, .project-card {
+      padding: 20px;
+    }
+  }
